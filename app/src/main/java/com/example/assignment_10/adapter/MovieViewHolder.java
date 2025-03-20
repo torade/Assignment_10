@@ -21,10 +21,10 @@ public class MovieViewHolder extends RecyclerView.ViewHolder{
     public MovieViewHolder(@NonNull View movieView, final MovieAdapter.OnItemClickListener listener)
     {
         super(movieView);
-        posterImageView = movieView.findViewById(R.id.imageViewPoster);
-        titleTextView = movieView.findViewById(R.id.textViewTitle);
-        yearTextView = movieView.findViewById(R.id.textViewYear);
-        genreTextView = movieView.findViewById(R.id.textViewGenre);
+        this.posterImageView = movieView.findViewById(R.id.imageViewPoster);
+        this.titleTextView = movieView.findViewById(R.id.textViewTitle);
+        this.yearTextView = movieView.findViewById(R.id.textViewYear);
+        this.genreTextView = movieView.findViewById(R.id.textViewGenre);
 
         // set click listener for the entire item
         movieView.setOnClickListener(new View.OnClickListener()
@@ -41,8 +41,8 @@ public class MovieViewHolder extends RecyclerView.ViewHolder{
         });
     }
 
-    public ImageView getPosterImageView(){ return posterImageView;}
-    public TextView getTitleTextView(){ return titleTextView; }
-    public TextView getYearTextView(){ return yearTextView; }
-    public TextView getGenreTextView(){ return genreTextView; }
+    public ImageView getPosterImageView(){ return this.posterImageView;}
+    public TextView getTitleTextView(){ return this.titleTextView; }
+    public TextView getYearTextView(){ return this.yearTextView; }
+    public TextView getGenreTextView(){ return this.genreTextView; }
 }

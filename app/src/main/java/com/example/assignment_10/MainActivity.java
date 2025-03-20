@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
             {
                 // launch detail activity
                 Intent intent = new Intent(this, MovieDetailActivity.class);
-                //intent.putExtra(MovieDetailActivity.EXTRA_MOVIE, movie); ----remove/keep this??
+                intent.putExtra(MovieDetailActivity.EXTRA_MOVIE, movie);
                 startActivity(intent);
             }
         }

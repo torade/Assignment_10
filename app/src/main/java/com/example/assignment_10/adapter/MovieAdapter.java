@@ -1,6 +1,5 @@
 package com.example.assignment_10.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,12 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_10.MainActivity;
 import com.example.assignment_10.R;
 import com.example.assignment_10.model.Movie;
 import com.example.assignment_10.util.ErrorHandler;
 
-import java.util.ArrayList;
 import java.util.List;
 import android.content.Context;
 
@@ -68,7 +65,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
             holder.getTitleTextView().setText(movie.getTitle());
             if (movie.getYear() == 0)
                 holder.getYearTextView().setText("N/A"); // year is set as 0 only if the data inside the JSON file is inaccurate (=> mark as N/A)
-            else holder.getYearTextView().setText(movie.getYear());
+            else holder.getYearTextView().setText(String.valueOf(movie.getYear()));
             holder.getGenreTextView().setText(movie.getGenre());
             holder.getPosterImageView().setImageResource(R.drawable.placeholder_poster);
         }
@@ -79,7 +76,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
             holder.getTitleTextView().setText("Error displaying movie.");
             holder.getYearTextView().setText("");
             holder.getGenreTextView().setText("Error displaying genre.");
-            holder.getPosterImageView().setImageResource(R.drawable.placeholder_error);
+            holder.getPosterImageView().setImageResource(R.drawable.placeholder_poster);
         }
 
     }

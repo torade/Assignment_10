@@ -66,11 +66,16 @@ public class MovieDetailActivity extends AppCompatActivity {
             //get movie from intent
             Movie movie =(Movie) getIntent().getSerializableExtra(EXTRA_MOVIE);
             if (movie == null)
+            {
+                Log.e(TAG,"MOVIEDETAILACTIVITY.JAVA LINIA 70");
                 throw new IllegalArgumentException("Movie not found.");
+            }
 
             // display details
             movieTitleTextView.setText(movie.getTitle());
-            movieYearTextView.setText(movie.getYear());
+            if (movie.getYear() == 0)
+                movieYearTextView.setText("N/A"); // year is set as 0 only if the data inside the JSON file is inaccurate (=> mark as N/A)
+            else movieYearTextView.setText(String.valueOf(movie.getYear()));
             movieGenreTextView.setText(movie.getGenre());
 
             //load image

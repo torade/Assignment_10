@@ -37,12 +37,12 @@ public class JsonUtils {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 Movie movie = new Movie();
                 // setting title
-                if (jsonObject.has("title"))
+                if (jsonObject.has("title") && !jsonObject.getString("title").equals("null"))
                     movie.setTitle(jsonObject.getString("title"));
                 else
                 {
-                    movie.setTitle("Unknown title"); // default value for movies with no title
                     Log.e(TAG, "No title provided");
+                    throw new JSONException("");
                 }
 
                 // setting year
@@ -99,10 +99,10 @@ public class JsonUtils {
         return movieList;
     }
 
-    private static void handleJsonException(Exception exception)
-    {
-        Log.e(TAG, "Error parsing JSON", exception);
-    }
+//    private static void handleJsonException(Exception exception)
+//    {
+//        Log.e(TAG, "Error parsing JSON", exception);
+//    }
 
 
     // Helper method to read a JSON file from resources
