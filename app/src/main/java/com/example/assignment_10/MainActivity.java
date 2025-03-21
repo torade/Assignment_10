@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
             movies = JsonUtils.loadMoviesFromJson(this, R.raw.movies);
 
             //create and set adapter
-            adapter = new MovieAdapter(this,movies,this);
+            adapter = new MovieAdapter(movies,this);
             moviesRecyclerView.setAdapter(adapter);
         }
         catch(Exception e)

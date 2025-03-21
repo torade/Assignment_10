@@ -25,14 +25,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
 
     private final List<Movie> movies;
     private final OnItemClickListener listener;
-    private final Context context;
 
     /**
      * Constructor to initialize the adapter with menu data
      */
-    public MovieAdapter(Context context, List<Movie> movies, OnItemClickListener listener)
+    public MovieAdapter( List<Movie> movies, OnItemClickListener listener)
     {
-        this.context = context;
         this.listener = listener;
         this.movies = movies;
     }
@@ -61,13 +59,25 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder>{
         {
             Movie movie = movies.get(position);
 
-            //set fields:
+            //setting title:
             holder.getTitleTextView().setText(movie.getTitle());
+            //setting year:
             if (movie.getYear() == 0)
                 holder.getYearTextView().setText("N/A"); // year is set as 0 only if the data inside the JSON file is inaccurate (=> mark as N/A)
             else holder.getYearTextView().setText(String.valueOf(movie.getYear()));
+            //setting genre:
             holder.getGenreTextView().setText(movie.getGenre());
-            holder.getPosterImageView().setImageResource(R.drawable.placeholder_poster);
+            //setting poster:
+            if (movie.getPosterResource().equals("N/A"))
+                holder.getPosterImageView().setImageResource(R.drawable.placeholder_poster);
+            else
+            {
+                int resourceId = holder.itemView.getContext().getResources().getIdentifier(movie.getPosterResource(), "drawable", holder.itemView.getContext().getPackageName());
+                if (resourceId != 0)
+                    holder.getPosterImageView().setImageResource(resourceId);
+                else
+                    holder.getPosterImageView().setImageResource(R.drawable.placeholder_poster);
+            }
         }
         catch (Exception e)
         {

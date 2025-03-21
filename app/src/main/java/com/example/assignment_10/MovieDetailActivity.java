@@ -81,12 +81,12 @@ public class MovieDetailActivity extends AppCompatActivity {
             //load image
             try
             {
-                int imageResourceId = ErrorHandler.getDrawableResourceId(this,movie.getPosterResource(), android.R.drawable.ic_menu_gallery);
+                int imageResourceId = ErrorHandler.getDrawableResourceId(this,movie.getPosterResource(),R.drawable.placeholder_poster);
                 movieImageView.setImageResource(imageResourceId);
             }
             catch (Exception e)
             {
-                movieImageView.setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
+                movieImageView.setImageResource(R.drawable.placeholder_poster);
                 Log.e(TAG, "Error loading image", e);
             }
 
